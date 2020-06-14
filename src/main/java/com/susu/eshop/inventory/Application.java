@@ -51,8 +51,7 @@ public class Application {
         jedisClusterNodes.add(new HostAndPort("192.168.31.160", 7001));
         jedisClusterNodes.add(new HostAndPort("192.168.31.58", 7003));
         jedisClusterNodes.add(new HostAndPort("192.168.31.154", 7005));
-        JedisCluster jedisCluster = new JedisCluster(jedisClusterNodes);
-        return jedisCluster;
+        return new JedisCluster(jedisClusterNodes);
     }
 
     public static void main(String[] args) {
