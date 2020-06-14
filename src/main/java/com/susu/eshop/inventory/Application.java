@@ -50,7 +50,7 @@ public class Application {
         Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
         jedisClusterNodes.add(new HostAndPort("192.168.31.160", 7001));
         jedisClusterNodes.add(new HostAndPort("192.168.31.58", 7003));
-        jedisClusterNodes.add(new HostAndPort("192.168.31.154", 7006));
+        jedisClusterNodes.add(new HostAndPort("192.168.31.154", 7005));
         JedisCluster jedisCluster = new JedisCluster(jedisClusterNodes);
         return jedisCluster;
     }
