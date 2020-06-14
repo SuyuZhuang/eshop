@@ -1,11 +1,13 @@
 package com.susu.eshop.inventory;
 
+import com.susu.eshop.inventory.listener.InitListener;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -54,6 +56,16 @@ public class Application {
         return new JedisCluster(jedisClusterNodes);
     }
 
+    /**
+     * 注册监听器
+     */
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Bean
+    public ServletListenerRegistrationBean servletListenerRegistrationBean() {
+        ServletListenerRegistrationBean servletListenerRegistrationBean = new ServletListenerRegistrationBean();
+        servletListenerRegistrationBean.setListener(new InitListener());
+        return servletListenerRegistrationBean;
+    }
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
